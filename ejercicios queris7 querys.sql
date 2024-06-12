@@ -2,7 +2,7 @@ USE CoderHouse
 
 /* DESAFIO CLASE 7 */ 
 
-/* 1.- Indicar cuantos cursos y carreras  tiene el ·rea de Data. Renombrar la nueva columna como cant_asignaturas. Keywords: Tipo, ¡rea, Asignaturas. */
+/* 1.- Indicar cuantos cursos y carreras  tiene el √°rea de Data. Renombrar la nueva columna como cant_asignaturas. Keywords: Tipo, √Årea, Asignaturas. */
 
 -- PARA VER LAS TABLAS
 SELECT * FROM Asignaturas
@@ -14,8 +14,8 @@ WHERE Area = 5									-- APLICAMOS AL AREA 5 QUE SERIA "Data"
 GROUP BY Tipo									-- AGRUPAMOS SEGUN CURSO O CARRERA
 
 
-/* 2.- Se requiere saber cual es el nombre, el documento y el telÈfono de los estudiantes que son profesionales en agronomÌa y que nacieron entre el aÒo 1970 y el aÒo 2000.
-Keywords: Estudiantes, ProfesiÛn, fecha de Nacimiento. */ 
+/* 2.- Se requiere saber cual es el nombre, el documento y el tel√©fono de los estudiantes que son profesionales en agronom√≠a y que nacieron entre el a√±o 1970 y el a√±o 2000.
+Keywords: Estudiantes, Profesi√≥n, fecha de Nacimiento. */ 
 
 -- PARA VER LAS TABLAS
 SELECT * FROM Estudiantes
@@ -29,10 +29,10 @@ Documento,
 Telefono
 FROM Estudiantes														-- TABLA A UTILIZAR
 where Profesion = '6'													-- NECESITAMOS AGRONOMIA DE LA TABLA PROFESIONES = 6
-and [Fecha de Nacimiento] BETWEEN '1970-01-01' AND '2000-12-31'			-- CONDICION DE FECHA ENTRE A—OS SOLICITADOS
+and [Fecha de Nacimiento] BETWEEN '1970-01-01' AND '2000-12-31'			-- CONDICION DE FECHA ENTRE A√ëOS SOLICITADOS
 	
-/* 3.- Se requiere un listado de los docentes que ingresaron en el aÒo 2021 y concatenar los campos nombre y apellido. El resultado debe utilizar un separador: guiÛn (-). 
-Ejemplo: Elba-Jimenez. Renombrar la nueva columna como Nombres_Apellidos. Los resultados de la nueva columna deben estar en may˙sculas. Keywords: Staff, Fecha Ingreso, Nombre, Apellido. */
+/* 3.- Se requiere un listado de los docentes que ingresaron en el a√±o 2021 y concatenar los campos nombre y apellido. El resultado debe utilizar un separador: gui√≥n (-). 
+Ejemplo: Elba-Jimenez. Renombrar la nueva columna como Nombres_Apellidos. Los resultados de la nueva columna deben estar en may√∫sculas. Keywords: Staff, Fecha Ingreso, Nombre, Apellido. */
 
 -- PARA VER LAS TABLAS
 SELECT * FROM Staff
@@ -42,7 +42,7 @@ SELECT UPPER(CONCAT(Nombre, '-', Apellido)) AS Nombres_Apellidos		-- COMENZAMOS 
 FROM Staff
 WHERE YEAR([Fecha Ingreso]) = 2021										-- CONDICION FECHA DE INGRESO DEL 2021
  
- /* 4.- Indicar la cantidad de encargados de docentes y de tutores. Renombrar la columna como CantEncargados. Quitar la palabra îEncargado îen cada uno de los registros. 
+ /* 4.- Indicar la cantidad de encargados de docentes y de tutores. Renombrar la columna como CantEncargados. Quitar la palabra ‚ÄùEncargado ‚Äùen cada uno de los registros. 
  Renombrar la columna como NuevoTipo. Keywords: Encargado, tipo, Encargado_ID. */
 
  -- PARA VER LAS TABLAS
@@ -65,7 +65,7 @@ WHERE YEAR([Fecha Ingreso]) = 2021										-- CONDICION FECHA DE INGRESO DEL 20
  GROUP BY Tipo, Jornada									-- PEDIMOS QUE AGRUPE SEGUN TIPO DE ASIGNATURA, QUE DEVOLVERA EL PROMEDIO POR GRUPO DE ASIGNATURA
  ORDER BY Promedio DESC
 
- /* 6.- Se requiere calcular la edad de los estudiantes en una nueva columna. Renombrar a la nueva columna Edad. Filtrar solo los que son mayores de 18 aÒos. 
+ /* 6.- Se requiere calcular la edad de los estudiantes en una nueva columna. Renombrar a la nueva columna Edad. Filtrar solo los que son mayores de 18 a√±os. 
 Ordenar de Menor a Mayor Keywords: Fecha de Nacimiento, Estudiantes. */
 
  -- PARA VER LAS TABLAS
@@ -88,7 +88,7 @@ Ordenar de Menor a Mayor Keywords: Fecha de Nacimiento, Estudiantes. */
 WHERE Correo LIKE '%.edu%' AND DocentesID >= 100					-- PEDIMOS LOS DATOS CON LA CONDICIONANTE QUE TENGA .EDU EN EL CORREO Y QUE EL ID SEA MAYOR AL VALOR QUE PIDE 100
 
 
-/* 8.- Se requiere conocer el documento, el domicilio el cÛdigo postal y el nombre de los primeros estudiantes que se registraron en la plataforma. 
+/* 8.- Se requiere conocer el documento, el domicilio el c√≥digo postal y el nombre de los primeros estudiantes que se registraron en la plataforma. 
 Keywords: Documento, Estudiantes, Fecha Ingreso. */
 
 -- PARA VER LAS TABLAS
@@ -99,7 +99,7 @@ SELECT Documento, Domicilio, [Codigo Postal], Nombre									-- PEDIMOS LOS DATO
 FROM Estudiantes 
 WHERE [Fecha Ingreso] = (SELECT MIN([Fecha Ingreso]) AS fechamin FROM Estudiantes)		-- AGREGAMOS QUE LA CONDICION SEA LA MENOR FECHA (PRIMER REGISTRO) EN UN SELECT ANIDADO
 
-/* 9.- Indicar el nombre apellido y documento de los docentes y tutores que tienen asignaturas ìUXî . 
+/* 9.- Indicar el nombre apellido y documento de los docentes y tutores que tienen asignaturas ‚ÄúUX‚Äù . 
 Keywords: Staff, Asignaturas, Nombre, Apellido. */
 
 -- PARA VER LAS TABLAS
@@ -110,9 +110,9 @@ SELECT Nombre, Apellido, Documento															-- PEDIMOS LOS DATOS DE LA TABL
 FROM Staff
 WHERE Asignatura IN (SELECT AsignaturasID FROM Asignaturas WHERE Nombre LIKE('%UX%'))		-- ANIDAMOS UNA SUBCONSULTA CON IN PARA QUE NOS DEVUELVA LOS VALORES QUE OBTENGA EL OPERADOR LIKE SOBRE UX
 
-/* 10.- Se desea calcular el 25% de aumento para las asignaturas del ·rea de marketing de la jornada maÒana
-se deben traer todos los campos, mas el de los c·lculos correspondientes el porcentaje y el Nuevo costo debe estar en decimal con 3 digitos. 
-Renombrar el calculo del porcentaje con el nombre porcentaje y la suma del costo mas el porcentaje por NuevoCosto. Keywords: Asignaturas, Costo, ¡rea, Jornada, Nombre */
+/* 10.- Se desea calcular el 25% de aumento para las asignaturas del √°rea de marketing de la jornada ma√±ana
+se deben traer todos los campos, mas el de los c√°lculos correspondientes el porcentaje y el Nuevo costo debe estar en decimal con 3 digitos. 
+Renombrar el calculo del porcentaje con el nombre porcentaje y la suma del costo mas el porcentaje por NuevoCosto. Keywords: Asignaturas, Costo, √Årea, Jornada, Nombre */
 
 -- PARA VER LAS TABLAS
 SELECT * FROM Asignaturas
@@ -123,7 +123,7 @@ SELECT *,
 CAST((Costo*0.25)AS DECIMAL(7,3)) AS ValorPorcentaje,		-- Tomamos el valor del porcentaje individual segun el valor de la asignatura
 Costo+CAST((Costo*0.25)AS DECIMAL(7,3)) AS NuevoCosto		-- Sumamos el valor del porcentaje mas el costo para tener el valor nuevo
 FROM Asignaturas
-WHERE Jornada = 'Manana' AND Nombre LIKE '%Marketing%'		-- Agregamos condicion que sea en la maÒana y sea de las asignaturas de marketing
+WHERE Jornada = 'Manana' AND Nombre LIKE '%Marketing%'		-- Agregamos condicion que sea en la ma√±ana y sea de las asignaturas de marketing
 
 -- FIN CONSIGNA 7
 
